@@ -1,0 +1,63 @@
+A todos los scripts se les indica el intérprete de la siguente manera (en este caso bash):
+
+	#!/bin/bash
+	
+Para imprimir mensajes (ver opciones):
+	
+	echo "Hola Mundo"
+	
+Para ejecutar el script hay que indicarle la ruta completa (se hace de varias formas):
+
+	/home/pagutierrez/holaMundo.sh
+	~/holaMundo.sh (no me ha funcionado)
+ 	./holaMundo.sh
+	
+Declaración de variables:
+
+	STR="Hola Mundo!!" (no hay que declararlas, se les asigna un valor cuando se crean)
+	echo $STR (sustituimos la variable por su valor $VARIABLE)
+	
+	Cuando el valor de la variable contenga espacios en blanco o caracteres especiales, se deberá encerrar entre comillas simples o dobles.
+	Una misma variable puede contener datos numéricos o de texto.
+	Las comillas simples sirven para que la cadena se represente tal cual (no se resuelven las variables).
+	Las comillas dobles permitirán resolver las variables internas.
+	Poner \ dentro de una cadena sirve para representar un carácter especial tal cual, por ejemplo "\$", se mostrará $.
+	Hay 2 tipos de variables:
+		- Variables locales.
+		- Variables de entorno (especifican la configuración del SO). Se listan con el comando 'env'
+	El comando 'export' establece una variable de entorno, de forma que sea accesible por los procesos hijos. Si el proceso hijo modifica la variable, no se modifica la del padre.
+	
+Variables intrínsecas: 
+	$#: número de argumentos de la línea de comandos
+	$n: n-ésimo argumento de la línea de comandos, si n>9, utilizar ${n}
+	$*: todos los argumentos de la línea de comandos (como una sola cadena)
+	$@: todos los argumentos de la línea de comandos (como un array)
+	$!: pid del último proceso que se lanzó con &
+	$?: valor de salida última orden ejecutada
+	
+	Navegar por comandos anteriores:
+		!$: último argumento del último comando ejecutado
+		!:n: n-ésimo argumento del último comando ejecutado
+		
+	Comandos interactivos de consola:
+		Ctrl+R: Buscar un comando en el historial de la consola
+		Alt+...: Navegar por los argumentos del último comando
+		
+Para leer un comando del usuario por teclado (read):
+	
+	read -s: no hace echo de la entrada
+	read -nN: solo acepta N caracteres de entrada
+	read -p "mensaje": muestra el mensaje al pedir la información al usuario
+	read -tT: acepta la entrada durante un tiempo máximo de T segundos
+	
+Sustitución de comandos:
+
+	LISTA=`ls` equivale LISTA=$(ls)
+	echo $LISTA
+	
+Operadores aritméticos:
+	
+	Suma +	Resta -	Multiplicación *	División /	Exponenciación **	Módulo %
+	Para que ejecute la operación hay que utilizar el comando 'let' o $[expresión] o $((expresión))
+	
+	
